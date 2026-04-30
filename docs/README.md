@@ -29,4 +29,17 @@
 
 - Добавлены `assets/favicon.svg`, `assets/favicon-32.png`, `assets/apple-touch-icon.png`.
 - Палитра сайта переведена с зелёной на тёмно-синюю.
-- Заголовок `OBLIVIO DUORUM` получил hover-слой с отдельной neural-текстурой в `neural.js`.
+- Заголовок `OBLIVIO DUORUM` получил постоянную neural-текстуру внутри букв; при наведении точки стягиваются к курсору.
+
+
+## Основные внешние ссылки
+
+- Openbook: https://github.com/antonkurenkov/openbook
+- Oblivio Duorum: https://github.com/antonkurenkov/oblivio.duorum
+
+## Проверка перед публикацией
+
+- Проверены внутренние якоря страницы.
+- Проверены локальные favicon-ассеты.
+- Проверен синтаксис JavaScript через `node --check`.
+- Убраны устаревшие CTA на старую папку первой книги; основные переходы ведут на два актуальных репозитория.

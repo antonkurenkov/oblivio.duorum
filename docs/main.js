@@ -54,7 +54,11 @@
     button.addEventListener('click', () => {
       if (!dialog || !dialogImage) return;
       dialogImage.src = button.dataset.image;
-      if (typeof dialog.showModal === 'function') dialog.showModal();
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        window.open(button.dataset.image, '_blank', 'noopener,noreferrer');
+      }
     });
   });
 

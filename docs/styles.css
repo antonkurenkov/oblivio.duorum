@@ -654,3 +654,37 @@ h1 {
   .gallery { grid-template-columns: 1fr; }
   .site-footer { align-items: flex-start; flex-direction: column; }
 }
+
+/* Canonical repository link cluster. */
+.header-links {
+  align-items: center;
+  display: flex;
+  gap: 0.55rem;
+}
+
+.header-cta.secondary {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+}
+
+.read-grid.two-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 720px) {
+  .header-links {
+    grid-column: 1 / -1;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .read-grid.two-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .header-links .header-cta {
+    margin-left: 0;
+  }
+}
