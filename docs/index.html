@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#071b38" />
+  <meta name="description" content="Oblivio Duorum / Забвение двоих — первое открытое издание архивного гримдарк-романа о памяти, документах и праве быть не стёртым." />
+  <meta property="og:title" content="Oblivio Duorum / Забвение двоих" />
+  <meta property="og:description" content="Архивный гримдарк о том, как власть переписывает не только историю, но и саму возможность помнить." />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/df00b2c0-1dd7-4051-8844-b0e4e81df852.png" />
+  <title>Oblivio Duorum / Забвение двоих</title>
+  <link rel="preconnect" href="https://raw.githubusercontent.com" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="neural.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <canvas id="neural-field" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" data-progress aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Наверх">
+      <span class="brand-mark">I/Ø</span>
+      <span class="brand-text">Oblivio Duorum</span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#book">О книге</a>
+      <a href="#edition">Издание</a>
+      <a href="#read">Читать</a>
+      <a href="#visuals">Визуальный ряд</a>
+    </nav>
+    <a class="header-cta" href="https://github.com/antonkurenkov/openbook/tree/main/1" target="_blank" rel="noreferrer">GitHub</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-pad" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Liber Primus · Archivarium Edition</p>
+        <h1 id="hero-title" class="hero-title">
+          <span class="title-neural-word" data-title-neural data-text="OBLIVIO DUORUM" aria-label="Oblivio Duorum">OBLIVIO DUORUM</span>
+          <span class="title-translation">Забвение двоих</span>
+        </h1>
+        <p class="lead">Архивный гримдарк о том, как власть переписывает не только историю, но и саму возможность помнить.</p>
+        <div class="hero-actions" aria-label="Действия">
+          <a class="button primary" href="https://github.com/antonkurenkov/openbook/tree/main/1/page/oblivio-duorum-markdown/oblivio_duorum_md" target="_blank" rel="noreferrer">Раскрыть</a>
+          <a class="button ghost" href="https://github.com/antonkurenkov/openbook/raw/main/1/combined/combined_unique_media_docx.zip" target="_blank" rel="noreferrer">Скачать DOCX</a>
+        </div>
+        <dl class="hero-stats" aria-label="Краткие сведения">
+          <div>
+            <dt>01</dt>
+            <dd>первая книга цикла</dd>
+          </div>
+          <div>
+            <dt>18</dt>
+            <dd>глав в исходниках</dd>
+          </div>
+          <div>
+            <dt>open</dt>
+            <dd>публикация на GitHub</dd>
+          </div>
+        </dl>
+      </div>
+
+      <aside class="cover-panel reveal" aria-label="Обложка и статус издания">
+        <div class="cover-shell">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/df00b2c0-1dd7-4051-8844-b0e4e81df852.png" alt="Обложка книги Oblivio Duorum" loading="eager" />
+        </div>
+        <div class="status-card">
+          <span class="pulse" aria-hidden="true"></span>
+          <div>
+            <strong>Первое открытое издание</strong>
+            <p>Word-исходники, обложка и визуальный ряд доступны в репозитории.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="quote-strip reveal" aria-label="Ключевая формула">
+      <p>«Иногда уничтожение людей начинается с уничтожения их связей и языка, которым о них можно говорить».</p>
+    </section>
+
+    <section id="book" class="section section-pad" aria-labelledby="book-title">
+      <div class="section-head reveal">
+        <p class="eyebrow">De memoria corrigenda</p>
+        <h2 id="book-title">Роман о следах, которые запрещено сопоставлять</h2>
+        <p>Главный герой, архивист Каэль Меррон, расследует аномальные массивы данных, связанные со стёртыми легионами II и XI. Чем ниже он спускается в слои имперской памяти, тем очевиднее становится: правду можно уничтожить не только насилием, но и формой документа.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <span class="card-index">01</span>
+          <h3>Архивариум как персонаж</h3>
+          <p>Холодный, вежливый, бюрократический ужас: двери, статусы доступа, протоколы, корректировки памяти и бесконечная машинная учтивость.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="card-index">02</span>
+          <h3>Язык между канцелярией и молитвой</h3>
+          <p>Латинские заголовки, служебные формулы и нервная внутренняя оптика героя собирают ритм философского триллера.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="card-index">03</span>
+          <h3>Верность, которую нельзя легализовать</h3>
+          <p>Сквозная линия «не разъединяй их» превращает расследование в этическую дуэль живой памяти и имперского порядка.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="edition" class="section section-pad split" aria-labelledby="edition-title">
+      <div class="reveal">
+        <p class="eyebrow">Editio prima</p>
+        <h2 id="edition-title">Лендинг как электронная обложка издания</h2>
+        <p>Страница сделана для GitHub Pages: без сборки, без внешних библиотек, с лёгким canvas-фоном и аккуратной книжной витриной. Дизайн держится на контрасте белого интерфейса, чёрной типографики, тёмно-синего акцента и архивной сетки.</p>
+      </div>
+      <div class="edition-list reveal" role="list">
+        <div role="listitem">
+          <span>Формат</span>
+          <strong>static HTML / CSS / JS</strong>
+        </div>
+        <div role="listitem">
+          <span>Деплой</span>
+          <strong>GitHub Pages</strong>
+        </div>
+        <div role="listitem">
+          <span>Исходники книги</span>
+          <strong>DOCX + images</strong>
+        </div>
+        <div role="listitem">
+          <span>Визуальный код</span>
+          <strong>archive · neural · dark blue</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="read" class="section section-pad" aria-labelledby="read-title">
+      <div class="section-head reveal">
+        <p class="eyebrow">Quomodo legere</p>
+        <h2 id="read-title">Как читать и распространять</h2>
+        <p>Лендинг ведёт к открытому репозиторию, папке первой книги и архиву DOCX-исходников. Его можно положить в корень отдельного репозитория или в папку `/docs`.</p>
+      </div>
+
+      <div class="read-grid">
+        <a class="read-card reveal" href="https://github.com/antonkurenkov/openbook" target="_blank" rel="noreferrer">
+          <span>01</span>
+          <h3>Открыть цикл</h3>
+          <p>Перейти к репозиторию «Зелёная дверь» и списку книг.</p>
+        </a>
+        <a class="read-card reveal" href="https://github.com/antonkurenkov/openbook/tree/main/1" target="_blank" rel="noreferrer">
+          <span>02</span>
+          <h3>Открыть книгу I</h3>
+          <p>Перейти к странице Oblivio Duorum и материалам первого издания.</p>
+        </a>
+        <a class="read-card reveal" href="https://github.com/antonkurenkov/openbook/tree/main/1/combined" target="_blank" rel="noreferrer">
+          <span>03</span>
+          <h3>Открыть исходники</h3>
+          <p>Посмотреть главы в формате Word и общий архив исходных файлов.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="visuals" class="section section-pad" aria-labelledby="visuals-title">
+      <div class="section-head reveal">
+        <p class="eyebrow">Imagines archivii</p>
+        <h2 id="visuals-title">Визуальный ряд</h2>
+        <p>Несколько изображений из репозитория: высокая вертикаль, архивная симметрия, технорелигиозная геометрия и следы документа, который не должен был сохраниться.</p>
+      </div>
+
+      <div class="gallery" aria-label="Галерея иллюстраций">
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/01.jpg" aria-label="Открыть иллюстрацию 1">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/01.jpg" alt="Архивный зал и одинокая фигура" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/05.jpg" aria-label="Открыть иллюстрацию 2">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/05.jpg" alt="Страж в техно-готическом коридоре" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/10.jpg" aria-label="Открыть иллюстрацию 3">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/10.jpg" alt="Схема двери и архивная геометрия" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/12.jpg" aria-label="Открыть иллюстрацию 4">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/12.jpg" alt="Тёмный артефакт в архивном зале" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/16.jpg" aria-label="Открыть иллюстрацию 5">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/16.jpg" alt="Сервиторы над документами" loading="lazy" />
+        </button>
+      </div>
+    </section>
+
+    <section class="terminal-section section-pad reveal" aria-label="Архивная консоль">
+      <div class="terminal-card">
+        <div class="terminal-top"><span></span><span></span><span></span></div>
+        <pre aria-label="Текстовый фрагмент интерфейса"><code>ARCHIVARIUM://OBLIVIO_DUORUM
+status: text recovered
+access: partial
+warning: correlation between II and XI is prohibited
+instruction: noli eos separare</code></pre>
+      </div>
+    </section>
+
+    <section class="final-cta section-pad reveal" aria-labelledby="final-title">
+      <p class="eyebrow">Non separabis</p>
+      <h2 id="final-title">Иногда книга действительно оказывается дверью.</h2>
+      <a class="button primary" href="https://github.com/antonkurenkov/openbook/tree/main/1/page/oblivio-duorum-markdown/oblivio_duorum_md" target="_blank" rel="noreferrer">Перейти к изданию</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Oblivio Duorum · первое открытое издание</p>
+    <div>
+      <a href="https://github.com/antonkurenkov/openbook" target="_blank" rel="noreferrer">openbook</a>
+      <a href="https://github.com/antonkurenkov/openbook/blob/main/LICENSE.md" target="_blank" rel="noreferrer">license</a>
+      <a href="#top">наверх</a>
+    </div>
+  </footer>
+
+  <dialog class="image-dialog" data-dialog aria-label="Просмотр иллюстрации">
+    <button class="dialog-close" data-dialog-close aria-label="Закрыть">×</button>
+    <img data-dialog-image src="" alt="Увеличенная иллюстрация" />
+  </dialog>
+</body>
+</html>
