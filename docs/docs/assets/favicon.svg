@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Oblivio Duorum">
+  <rect width="64" height="64" rx="14" fill="#07080d"/>
+  <circle cx="32" cy="32" r="21.5" fill="none" stroke="#efe5d2" stroke-width="2.5"/>
+  <path d="M32 8v48M10 32h44" fill="none" stroke="#efe5d2" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="32" cy="7.5" r="2.2" fill="#c5a76b"/>
+  <circle cx="32" cy="56.5" r="2.2" fill="#c5a76b"/>
+  <circle cx="8.5" cy="32" r="2.2" fill="#c5a76b"/>
+  <circle cx="55.5" cy="32" r="2.2" fill="#c5a76b"/>
+  <path d="M25.5 48V25.5c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5V48" fill="none" stroke="#efe5d2" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M28 48V40c0-2.2 1.8-4 4-4s4 1.8 4 4v8" fill="none" stroke="#c5a76b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 49.5h16" fill="none" stroke="#efe5d2" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="2.5" fill="#07080d" stroke="#efe5d2" stroke-width="2"/>
+  <circle cx="32" cy="19" r="2.2" fill="#07080d" stroke="#efe5d2" stroke-width="2"/>
+  <circle cx="10.5" cy="32" r="2.2" fill="#07080d" stroke="#efe5d2" stroke-width="2"/>
+  <circle cx="53.5" cy="32" r="2.2" fill="#07080d" stroke="#efe5d2" stroke-width="2"/>
+</svg>
