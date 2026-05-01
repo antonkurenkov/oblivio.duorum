@@ -1085,3 +1085,62 @@ h2 {
     transform: none;
   }
 }
+
+/* Hero sigil instead of vertical cover */
+
+.sigil-panel {
+  width: min(500px, 100%);
+  padding: clamp(14px, 2.4vw, 22px);
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(197, 167, 107, .10), transparent 58%),
+    rgba(8, 10, 16, .72);
+}
+
+.sigil-panel::before {
+  inset: 10px;
+  border-color: rgba(197, 167, 107, .26);
+}
+
+.sigil-panel::after {
+  inset: 18px;
+  border-color: rgba(239, 229, 210, .10);
+}
+
+.sigil-panel img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
+  background: #050609;
+  filter:
+    saturate(.96)
+    contrast(1.04)
+    brightness(.94);
+}
+
+.sigil-panel .image-button {
+  position: relative;
+}
+
+.sigil-panel .image-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 44%, rgba(0, 0, 0, .18) 100%);
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 940px) {
+  .sigil-panel {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 620px) {
+  .sigil-panel {
+    width: min(100%, 390px);
+    padding: 12px;
+  }
+}
