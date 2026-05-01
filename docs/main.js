@@ -8,63 +8,185 @@
   const dialogImage = document.querySelector('[data-dialog-image]');
   const dialogClose = document.querySelector('[data-dialog-close]');
   const chapterGallery = document.querySelector('[data-chapter-gallery]');
+  const emptyGalleryNote = document.querySelector('[data-empty-gallery]');
   const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
 
-  const chapterTitles = [
-    'Apocryphum',
-    'Silentium',
-    'Dispersae',
-    'Absentiae',
-    'Custodes Pallidi',
-    'Custodes Viarum',
-    'Vix Fuit',
-    'Oblivio Memoriae',
-    'Vas Haeresis',
-    'Archivarium',
-    'Testimonium',
-    'Contra Scriptum',
-    'Relicta',
-    'Numeri Absentium',
-    'Porta',
-    'Noli Separare',
-    'Concordantia',
-    'Finis'
+  const chapterEntries = [
+    {
+      file: '01',
+      mark: 'APOCRYPHUM',
+      latin: 'De numeris absentium',
+      title: 'Apocryphum: De numeris absentium',
+      ru: 'Апокриф о числах отсутствующих',
+      group: 'early'
+    },
+    {
+      file: '02',
+      mark: 'I',
+      latin: 'Dispersae Reliquiae',
+      title: 'Dispersae Reliquiae',
+      ru: 'Технический мусор',
+      group: 'early'
+    },
+    {
+      file: '03',
+      mark: 'II',
+      latin: 'Silentium Impositum',
+      title: 'Silentium Impositum',
+      ru: 'Обет молчания',
+      group: 'early'
+    },
+    {
+      file: '04',
+      mark: 'III',
+      latin: 'Absentiae Scriptura',
+      title: 'Absentiae Scriptura',
+      ru: 'Почерк отсутствия',
+      group: 'early'
+    },
+    {
+      file: '05',
+      mark: 'IV',
+      latin: 'Custodes Pallidi',
+      title: 'Custodes Pallidi',
+      ru: 'Бледный Дозор',
+      group: 'early'
+    },
+    {
+      file: '06',
+      mark: 'V',
+      latin: 'Custodes Viarum',
+      title: 'Custodes Viarum',
+      ru: 'Хранители Пути',
+      group: 'early'
+    },
+    {
+      file: '07',
+      mark: 'VI',
+      latin: 'Vix Fuit',
+      title: 'Vix Fuit',
+      ru: 'То, чего не должно быть',
+      group: 'middle'
+    },
+    {
+      file: '08',
+      mark: 'VII',
+      latin: 'Limes Imperii',
+      title: 'Limes Imperii',
+      ru: 'Имперский предел',
+      group: 'middle'
+    },
+    {
+      file: '09',
+      mark: 'VIII',
+      latin: 'Monolithus Ymgi',
+      title: 'Monolithus Ymgi',
+      ru: 'Монолит Имги',
+      group: 'middle'
+    },
+    {
+      file: '10',
+      mark: 'IX',
+      latin: 'Respira',
+      title: 'Respira',
+      ru: 'Дыши',
+      group: 'middle'
+    },
+    {
+      file: '11',
+      mark: 'X',
+      latin: 'Schema Divisum',
+      title: 'Schema Divisum',
+      ru: 'Чертёж',
+      group: 'middle'
+    },
+    {
+      file: '12',
+      mark: 'XI',
+      latin: 'Via Falsa',
+      title: 'Via Falsa',
+      ru: 'Ложный маршрут',
+      group: 'middle'
+    },
+    {
+      file: '13',
+      mark: 'XII',
+      latin: 'Malum',
+      title: 'Malum',
+      ru: 'Malum',
+      group: 'late'
+    },
+    {
+      file: '14',
+      mark: 'XIII',
+      latin: 'Arcus Vetrá',
+      title: 'Arcus Vetrá',
+      ru: 'Арка Ветра́',
+      group: 'late'
+    },
+    {
+      file: '15',
+      mark: 'XIV',
+      latin: 'Colloquium Extremum',
+      title: 'Colloquium Extremum',
+      ru: 'Последний разговор',
+      group: 'late'
+    },
+    {
+      file: '16',
+      mark: 'XV',
+      latin: 'Vestigia Duorum',
+      title: 'Vestigia Duorum',
+      ru: 'Пепел двух',
+      group: 'late'
+    },
+    {
+      file: '17',
+      mark: 'XVI',
+      latin: 'Oblivio memoriae',
+      title: 'Oblivio memoriae',
+      ru: 'Забвение памяти',
+      group: 'late'
+    },
+    {
+      file: '18',
+      mark: 'FINIS',
+      latin: 'Vas Haeresis',
+      title: 'Vas Haeresis',
+      ru: 'Контейнер ереси',
+      group: 'late'
+    }
   ];
 
   const chapterExtensions = ['jpg', 'png', 'webp', 'jpeg'];
+  let loadedChapterImages = 0;
+  let revealObserver = null;
 
   if (year) {
     year.textContent = new Date().getFullYear();
   }
 
-  function padNumber(value) {
-    return String(value).padStart(2, '0');
+  function updateEmptyGalleryState() {
+    if (!emptyGalleryNote) return;
+    emptyGalleryNote.hidden = loadedChapterImages > 0;
   }
 
-  function chapterGroup(index) {
-    if (index <= 6) return 'early';
-    if (index <= 12) return 'middle';
-    return 'late';
-  }
-
-  function createChapterCard(index) {
-    const number = padNumber(index);
-    const title = chapterTitles[index - 1] || `Capitulum ${number}`;
-    const initialSrc = `assets/chapters/${number}.${chapterExtensions[0]}`;
+  function createChapterCard(entry) {
+    const initialSrc = `assets/chapters/${entry.file}.${chapterExtensions[0]}`;
 
     const figure = document.createElement('figure');
     figure.className = 'chapter-card reveal';
-    figure.dataset.group = chapterGroup(index);
+    figure.dataset.group = entry.group;
 
     const button = document.createElement('button');
     button.type = 'button';
-    button.setAttribute('aria-label', `Открыть титульник главы ${number}`);
+    button.setAttribute('aria-label', `Открыть титульник: ${entry.title}`);
 
     const img = document.createElement('img');
     img.src = initialSrc;
-    img.alt = `Титульное изображение главы ${number}: ${title}`;
+    img.alt = `Титульное изображение: ${entry.title} / ${entry.ru}`;
     img.loading = 'lazy';
-    img.dataset.base = `assets/chapters/${number}`;
+    img.dataset.base = `assets/chapters/${entry.file}`;
     img.dataset.extensionIndex = '0';
 
     img.addEventListener('error', () => {
@@ -73,6 +195,7 @@
 
       if (nextIndex >= chapterExtensions.length) {
         figure.remove();
+        updateEmptyGalleryState();
         return;
       }
 
@@ -81,15 +204,23 @@
     });
 
     img.addEventListener('load', () => {
+      loadedChapterImages += 1;
       button.dataset.image = img.currentSrc || img.src;
-    });
+      updateEmptyGalleryState();
+    }, { once: true });
 
     button.addEventListener('click', () => {
       openImage(button.dataset.image || img.currentSrc || img.src, img.alt);
     });
 
     const caption = document.createElement('figcaption');
-    caption.innerHTML = `<span>${number}</span><span>${title}</span>`;
+    caption.innerHTML = `
+      <span class="chapter-mark">${entry.mark}</span>
+      <span class="chapter-name">
+        <strong>${entry.latin}</strong>
+        <em>${entry.ru}</em>
+      </span>
+    `;
 
     button.appendChild(img);
     figure.appendChild(button);
@@ -103,13 +234,13 @@
 
     const fragment = document.createDocumentFragment();
 
-    for (let index = 1; index <= 18; index += 1) {
-      fragment.appendChild(createChapterCard(index));
-    }
+    chapterEntries.forEach((entry) => {
+      fragment.appendChild(createChapterCard(entry));
+    });
 
     chapterGallery.innerHTML = '';
     chapterGallery.appendChild(fragment);
-
+    updateEmptyGalleryState();
     observeReveals(Array.from(chapterGallery.querySelectorAll('.reveal')));
   }
 
@@ -163,8 +294,6 @@
       link.classList.toggle('is-active', link.getAttribute('href') === `#${activeId}`);
     });
   }
-
-  let revealObserver = null;
 
   function observeReveals(items) {
     if (!items.length) return;
