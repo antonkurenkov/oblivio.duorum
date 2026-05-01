@@ -1,508 +1,208 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07080d">
-  <meta name="description" content="Oblivio Duorum / Забвение двоих — первое открытое издание архивного гримдарк-романа о памяти, документах и праве быть не стёртым.">
-
-  <meta property="og:title" content="Oblivio Duorum / Забвение двоих">
-  <meta property="og:description" content="Архивный гримдарк о следах, документах и невозможности окончательно стереть связь.">
-  <meta property="og:type" content="book">
-  <meta property="og:image" content="assets/covers/oblivio-sigil.png">
-  <meta property="og:url" content="https://antonkurenkov.github.io/oblivio.duorum/">
-
-  <link rel="canonical" href="https://antonkurenkov.github.io/oblivio.duorum/">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07080d" />
+  <meta name="description" content="Oblivio Duorum / Забвение двоих — первое открытое издание архивного гримдарк-романа о памяти, документах и праве быть не стёртым." />
+  <meta property="og:title" content="Oblivio Duorum / Забвение двоих" />
+  <meta property="og:description" content="Архивный гримдарк о том, как власть переписывает не только историю, но и саму возможность помнить." />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="assets/covers/oblivio-sigil.png" />
   <title>Oblivio Duorum / Забвение двоих</title>
-
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
-    :root {
-      color-scheme: dark;
-      --void: #07080d;
-      --void-2: #0b0e15;
-      --panel: rgba(15, 18, 28, .76);
-      --panel-solid: #10141f;
-      --ink: #efe5d2;
-      --ink-soft: #c9bfaa;
-      --muted: #8f8993;
-      --line: rgba(239, 229, 210, .13);
-      --line-strong: rgba(239, 229, 210, .24);
-      --gold: #c5a76b;
-      --gold-soft: rgba(197, 167, 107, .12);
-      --blue: #7d93b8;
-      --blue-deep: #141b28;
-      --red-dust: #9b5c46;
-      --serif: Georgia, "Times New Roman", Times, serif;
-      --mono-serif: Consolas, "Times New Roman", Georgia, serif;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    html {
-      background: var(--void);
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 75% 8%, rgba(125, 147, 184, .14), transparent 30rem),
-        radial-gradient(circle at 18% 10%, rgba(197, 167, 107, .12), transparent 28rem),
-        radial-gradient(circle at 50% 110%, rgba(155, 92, 70, .10), transparent 36rem),
-        linear-gradient(180deg, #05060a 0%, #0b0e15 46%, #07080d 100%);
-      color: var(--ink);
-    }
-
-    body::before {
-      opacity: .18;
-      background:
-        linear-gradient(90deg, rgba(239,229,210,.06) 1px, transparent 1px),
-        linear-gradient(rgba(239,229,210,.045) 1px, transparent 1px);
-      background-size: 86px 86px;
-      mask-image: radial-gradient(circle at 50% 22%, #000 0 40%, transparent 78%);
-    }
-
-    body::after {
-      opacity: .10;
-      background-image:
-        radial-gradient(circle at 22% 18%, rgba(239,229,210,.42) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 76% 36%, rgba(197,167,107,.38) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 52% 74%, rgba(125,147,184,.24) 0 1px, transparent 1.6px);
-      background-size: 173px 173px, 251px 251px, 311px 311px;
-    }
-
-    .archive-lineart {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: .34;
-      overflow: hidden;
-    }
-
-    .archive-lineart svg {
-      width: 100%;
-      height: 100%;
-      min-width: 900px;
-      transform: translateX(-50%);
-      margin-left: 50%;
-    }
-
-    .archive-lineart .axis,
-    .archive-lineart .arc,
-    .archive-lineart .thin {
-      fill: none;
-      stroke: rgba(239, 229, 210, .30);
-      stroke-width: 1;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .archive-lineart .faint {
-      fill: none;
-      stroke: rgba(239, 229, 210, .14);
-      stroke-width: 1;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .archive-lineart .gold {
-      fill: none;
-      stroke: rgba(197, 167, 107, .38);
-      stroke-width: 1;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .archive-lineart .dot {
-      fill: rgba(239, 229, 210, .46);
-    }
-
-    .archive-lineart .gold-dot {
-      fill: rgba(197, 167, 107, .58);
-    }
-
-    .site-header {
-      border-color: rgba(239, 229, 210, .13);
-      background: rgba(8, 10, 16, .82);
-      box-shadow: 0 18px 60px rgba(0,0,0,.38);
-    }
-
-    .site-header.is-compact {
-      background: rgba(8, 10, 16, .94);
-      border-color: rgba(197, 167, 107, .24);
-    }
-
-    .brand,
-    h1,
-    h2,
-    h3 {
-      color: var(--ink);
-    }
-
-    .brand-mark {
-      border-color: rgba(197, 167, 107, .44);
-      color: var(--gold);
-      background: rgba(197, 167, 107, .08);
-    }
-
-    .eyebrow,
-    .subtitle,
-    .chapter-mark,
-    .site-footer a {
-      color: var(--gold);
-    }
-
-    h1 {
-      font-family: var(--serif);
-      letter-spacing: .12em;
-      text-shadow: 0 0 32px rgba(197, 167, 107, .15);
-    }
-
-    .lead,
-    .section-head p,
-    .split p,
-    .read-card p,
-    .feature-card p,
-    .final-cta p {
-      color: var(--ink-soft);
-    }
-
-    .button.primary {
-      border-color: rgba(197, 167, 107, .72);
-      background: linear-gradient(135deg, #8c6f3f, #c5a76b);
-      color: #07080d;
-      box-shadow: 0 18px 44px rgba(197,167,107,.16);
-    }
-
-    .button.secondary,
-    .feature-card,
-    .read-card,
-    .edition-list,
-    .cover-panel,
-    .cover-card,
-    .chapter-card {
-      background: rgba(13, 16, 25, .74);
-      border-color: rgba(239, 229, 210, .13);
-    }
-
-    .quote-strip {
-      background:
-        linear-gradient(135deg, rgba(16, 20, 31, .90), rgba(7, 8, 13, .92)),
-        radial-gradient(circle at 80% 20%, rgba(197, 167, 107, .10), transparent 22rem);
-      border-color: rgba(239, 229, 210, .22);
-    }
-
-    .cover-panel figcaption,
-    .cover-card figcaption {
-      display: none !important;
-    }
-
-    .hero {
-      position: relative;
-    }
-
-    .cover-panel {
-      width: min(520px, 100%);
-      justify-self: center;
-    }
-
-    .cover-panel::before,
-    .cover-card::before {
-      border-color: rgba(197, 167, 107, .24);
-    }
-
-    .cover-panel::after,
-    .cover-card::after {
-      border-color: rgba(239, 229, 210, .10);
-    }
-
-    @media (max-width: 940px) {
-      .archive-lineart {
-        opacity: .22;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-copy {
-        justify-self: center;
-        text-align: center;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .archive-lineart svg {
-        min-width: 720px;
-      }
-
-      h1 {
-        letter-spacing: .075em;
-      }
-    }
-  </style>
-
+  <link rel="preconnect" href="https://raw.githubusercontent.com" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/favicon/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/favicon/site.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
   <script defer src="neural.js"></script>
   <script defer src="main.js"></script>
 </head>
-
 <body>
   <canvas id="neural-field" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
-
-  <div class="archive-lineart" aria-hidden="true">
-    <svg viewBox="0 0 1600 1200" preserveAspectRatio="xMidYMid slice">
-      <line class="axis" x1="800" y1="40" x2="800" y2="1160"></line>
-      <line class="faint" x1="250" y1="980" x2="1350" y2="980"></line>
-
-      <circle class="arc" cx="800" cy="250" r="210"></circle>
-      <circle class="faint" cx="800" cy="250" r="132"></circle>
-      <circle class="faint" cx="800" cy="250" r="52"></circle>
-
-      <path class="gold" d="M590 250 L800 460 L1010 250"></path>
-      <path class="faint" d="M590 250 L800 40 L1010 250"></path>
-
-      <path class="axis" d="M800 360 C720 438 680 560 680 710 L680 980"></path>
-      <path class="axis" d="M800 360 C880 438 920 560 920 710 L920 980"></path>
-
-      <path class="thin" d="M680 710 L565 930"></path>
-      <path class="thin" d="M920 710 L1035 930"></path>
-
-      <path class="faint" d="M565 930 C520 870 500 805 510 735"></path>
-      <path class="faint" d="M1035 930 C1080 870 1100 805 1090 735"></path>
-
-      <path class="axis" d="M740 980 L740 680"></path>
-      <path class="axis" d="M860 980 L860 680"></path>
-
-      <path class="faint" d="M640 980 L640 780"></path>
-      <path class="faint" d="M960 980 L960 780"></path>
-
-      <path class="gold" d="M760 980 L760 820 C760 790 780 770 800 770 C820 770 840 790 840 820 L840 980"></path>
-
-      <circle class="gold-dot" cx="800" cy="40" r="5"></circle>
-      <circle class="dot" cx="800" cy="120" r="4"></circle>
-      <circle class="dot" cx="800" cy="250" r="5"></circle>
-      <circle class="dot" cx="590" cy="250" r="5"></circle>
-      <circle class="dot" cx="1010" cy="250" r="5"></circle>
-      <circle class="gold-dot" cx="800" cy="460" r="5"></circle>
-      <circle class="dot" cx="680" cy="710" r="4"></circle>
-      <circle class="dot" cx="920" cy="710" r="4"></circle>
-      <circle class="gold-dot" cx="800" cy="770" r="5"></circle>
-
-      <path class="faint" d="M430 980 L430 760"></path>
-      <path class="faint" d="M1170 980 L1170 760"></path>
-      <path class="faint" d="M360 980 L360 850"></path>
-      <path class="faint" d="M1240 980 L1240 850"></path>
-
-      <circle class="dot" cx="430" cy="760" r="4"></circle>
-      <circle class="dot" cx="1170" cy="760" r="4"></circle>
-      <circle class="gold-dot" cx="360" cy="980" r="4"></circle>
-      <circle class="gold-dot" cx="1240" cy="980" r="4"></circle>
-
-      <path class="faint" d="M250 980 C340 900 415 890 510 930"></path>
-      <path class="faint" d="M1350 980 C1260 900 1185 890 1090 930"></path>
-
-      <path class="thin" d="M710 1040 L890 1040"></path>
-      <path class="faint" d="M650 1088 L950 1088"></path>
-      <path class="faint" d="M710 1128 L890 1128"></path>
-    </svg>
-  </div>
-
-  <a class="skip-link" href="#main">Перейти к содержанию</a>
   <div class="scroll-progress" data-progress aria-hidden="true"></div>
 
   <header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label="Oblivio Duorum — наверх">
+    <a class="brand" href="#top" aria-label="Наверх">
       <span class="brand-mark">I/Ø</span>
-      <span class="brand-text">OBLIVIO DUORUM</span>
+      <span class="brand-text">Oblivio Duorum</span>
     </a>
-
     <nav class="nav" aria-label="Основная навигация">
-      <a href="#book">Книга</a>
+      <a href="#book">О книге</a>
       <a href="#edition">Издание</a>
-      <a href="#covers">Обложки</a>
-      <a href="#chapters">Титульники</a>
       <a href="#read">Читать</a>
+      <a href="#visuals">Визуальный ряд</a>
     </nav>
-
-    <div class="header-links" aria-label="Репозитории">
-      <a class="header-cta secondary" href="https://github.com/antonkurenkov/openbook" target="_blank" rel="noreferrer">Openbook</a>
-      <a class="header-cta" href="https://github.com/antonkurenkov/oblivio.duorum" target="_blank" rel="noreferrer">GitHub</a>
-    </div>
+    <a class="header-cta" href="https://github.com/antonkurenkov/openbook/tree/main/1" target="_blank" rel="noreferrer">GitHub</a>
   </header>
 
-  <main id="main">
-    <section class="hero section-pad" id="top" aria-labelledby="hero-title">
+  <main id="top">
+    <section class="hero section-pad" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="eyebrow">LIBER PRIMUS · ARCHIVARIUM EDITION</p>
-
-        <h1 id="hero-title">
-          <span>OBLIVIO</span>
-          <span>DUORUM</span>
-        </h1>
-
-        <p class="subtitle">Забвение двоих</p>
-
-        <p class="lead">
-          Архивный гримдарк о памяти, документах и машине, которая переписывает не только историю,
-          но и саму возможность помнить.
-        </p>
-
-        <div class="hero-actions" aria-label="Основные действия">
-          <a class="button primary" href="https://github.com/antonkurenkov/oblivio.duorum/tree/main/page/oblivio-duorum-markdown/oblivio_duorum_md" target="_blank" rel="noreferrer">
-            Читать Markdown
-          </a>
-          <a class="button secondary" href="https://github.com/antonkurenkov/oblivio.duorum" target="_blank" rel="noreferrer">
-            Репозиторий книги
-          </a>
+        <p class="eyebrow">Liber Primus · Archivarium Edition</p>
+        <h1 id="hero-title">Oblivio Duorum<br><span>Забвение двоих</span></h1>
+        <p class="lead">Архивный гримдарк о том, как власть переписывает не только историю, но и саму возможность помнить.</p>
+        <div class="hero-actions" aria-label="Действия">
+          <a class="button primary" href="https://github.com/antonkurenkov/openbook/tree/main/1/page/oblivio-duorum-markdown/oblivio_duorum_md" target="_blank" rel="noreferrer">Раскрыть</a>
+          <a class="button ghost" href="https://github.com/antonkurenkov/openbook/raw/main/1/combined/combined_unique_media_docx.zip" target="_blank" rel="noreferrer">Скачать DOCX</a>
         </div>
+        <dl class="hero-stats" aria-label="Краткие сведения">
+          <div>
+            <dt>01</dt>
+            <dd>первая книга цикла</dd>
+          </div>
+          <div>
+            <dt>18</dt>
+            <dd>глав в исходниках</dd>
+          </div>
+          <div>
+            <dt>open</dt>
+            <dd>публикация на GitHub</dd>
+          </div>
+        </dl>
       </div>
 
-      <figure class="cover-panel sigil-panel reveal">
-        <button class="image-button" type="button" data-image="assets/covers/oblivio-sigil.png" aria-label="Открыть архивный знак Oblivio Duorum крупно">
-          <img src="assets/covers/oblivio-sigil.png" alt="Архивный знак Oblivio Duorum: тёмный сигил с порталом, кругами и золотыми точками" loading="eager">
-        </button>
-      </figure>
+      <aside class="cover-panel reveal" aria-label="Обложка и статус издания">
+        <div class="cover-shell">
+          <img src="assets/covers/oblivio-sigil.png" alt="Обложка книги Oblivio Duorum" loading="eager" />
+        </div>
+        <div class="status-card">
+          <span class="pulse" aria-hidden="true"></span>
+          <div>
+            <strong>Первое открытое издание</strong>
+            <p>Word-исходники, обложка и визуальный ряд доступны в репозитории.</p>
+          </div>
+        </div>
+      </aside>
     </section>
 
     <section class="quote-strip reveal" aria-label="Ключевая формула">
-      <p>«Иногда забвение начинается с уничтожения связей и языка, которым о них можно говорить».</p>
+      <p>«Иногда уничтожение людей начинается с уничтожения их связей и языка, которым о них можно говорить».</p>
     </section>
 
     <section id="book" class="section section-pad" aria-labelledby="book-title">
       <div class="section-head reveal">
-        <p class="eyebrow">DE MEMORIA</p>
+        <p class="eyebrow">De memoria corrigenda</p>
         <h2 id="book-title">Роман о следах, которые запрещено сопоставлять</h2>
-        <p>
-          Архивист Каэль Меррон расследует аномальные массивы данных, связанные со стёртыми
-          легионами II и XI. Чем ниже он спускается в слои имперской памяти, тем очевиднее становится:
-          правду можно уничтожить не только насилием, но и формой документа.
-        </p>
+        <p>Главный герой, архивист Каэль Меррон, расследует аномальные массивы данных, связанные со стёртыми легионами II и XI. Чем ниже он спускается в слои имперской памяти, тем очевиднее становится: правду можно уничтожить не только насилием, но и формой документа.</p>
       </div>
 
       <div class="feature-grid">
         <article class="feature-card reveal">
-          <span>01</span>
-          <h3>Архивариум</h3>
-          <p>Холодный институциональный ужас: двери, статусы доступа, протоколы, корректировки памяти и машинная учтивость.</p>
+          <span class="card-index">01</span>
+          <h3>Архивариум как персонаж</h3>
+          <p>Холодный, вежливый, бюрократический ужас: двери, статусы доступа, протоколы, корректировки памяти и бесконечная машинная учтивость.</p>
         </article>
-
         <article class="feature-card reveal">
-          <span>02</span>
-          <h3>Язык</h3>
-          <p>Высокий Готик, канцелярские формулы и нервная оптика героя собирают ритм философского триллера.</p>
+          <span class="card-index">02</span>
+          <h3>Язык между канцелярией и молитвой</h3>
+          <p>Латинские заголовки, служебные формулы и нервная внутренняя оптика героя собирают ритм философского триллера.</p>
         </article>
-
         <article class="feature-card reveal">
-          <span>03</span>
-          <h3>Связь</h3>
-          <p>Арка «Не разъединяй их» превращает расследование в этическую дуэль живой памяти и имперского порядка.</p>
+          <span class="card-index">03</span>
+          <h3>Верность, которую нельзя легализовать</h3>
+          <p>Сквозная линия «не разъединяй их» превращает расследование в этическую дуэль живой памяти и имперского порядка.</p>
         </article>
       </div>
     </section>
 
     <section id="edition" class="section section-pad split" aria-labelledby="edition-title">
       <div class="reveal">
-        <p class="eyebrow">EDITIO APERTA</p>
-        <h2 id="edition-title">Открытое издание как архивный контейнер</h2>
-        <p>
-          Этот лендинг работает как электронная обложка первого издания.
+        <p class="eyebrow">Editio prima</p>
+        <h2 id="edition-title">Лендинг как электронная обложка издания</h2>
+        <p>Страница сделана для GitHub Pages: без сборки, без внешних библиотек, с лёгким canvas-фоном и аккуратной книжной витриной. Дизайн держится на контрасте белого интерфейса, чёрной типографики, зелёного акцента и архивной сетки.</p>
       </div>
-
       <div class="edition-list reveal" role="list">
-        <div role="listitem"><span>Формат</span><strong>HTML · CSS · JS</strong></div>
-        <div role="listitem"><span>Публикация</span><strong>GitHub Pages</strong></div>
-        <div role="listitem"><span>Исходники</span><strong>DOCX · Markdown · Images</strong></div>
-        <div role="listitem"><span>Цикл</span><strong>ЗЕЛЁНАЯ ДВЕРЬ</strong></div>
+        <div role="listitem">
+          <span>Формат</span>
+          <strong>static HTML / CSS / JS</strong>
+        </div>
+        <div role="listitem">
+          <span>Деплой</span>
+          <strong>GitHub Pages</strong>
+        </div>
+        <div role="listitem">
+          <span>Исходники книги</span>
+          <strong>DOCX + images</strong>
+        </div>
+        <div role="listitem">
+          <span>Визуальный код</span>
+          <strong>archive · neural · green door</strong>
+        </div>
       </div>
-    </section>
-
-    <section id="covers" class="section section-pad" aria-labelledby="covers-title">
-      <div class="section-head reveal">
-        <p class="eyebrow">TEGUMENTA</p>
-        <h2 id="covers-title">Три обложки первого издания</h2>
-        <p>
-          Три оптики одной книги:
-        </p>
-      </div>
-
-      <div class="cover-gallery" aria-label="Галерея обложек">
-        <figure class="cover-card reveal">
-          <button class="image-button" type="button" data-image="assets/covers/cover-anime.png" aria-label="Открыть аниме-обложку крупно">
-            <img src="assets/covers/cover-anime.png" alt="Аниме-обложка Oblivio Duorum" loading="lazy">
-          </button>
-        </figure>
-
-        <figure class="cover-card reveal featured">
-          <button class="image-button" type="button" data-image="assets/covers/cover-dark.jpg" aria-label="Открыть тёмную обложку крупно">
-            <img src="assets/covers/cover-dark.jpg" alt="Тёмная архивная обложка Oblivio Duorum" loading="lazy">
-          </button>
-        </figure>
-
-        <figure class="cover-card reveal">
-          <button class="image-button" type="button" data-image="assets/covers/cover-lineart.png" aria-label="Открыть лайнарт-обложку крупно">
-            <img src="assets/covers/cover-lineart.png" alt="Лайнарт-обложка Oblivio Duorum" loading="lazy">
-          </button>
-        </figure>
-      </div>
-    </section>
-
-    <section id="chapters" class="section section-pad" aria-labelledby="chapters-title">
-      <div class="section-head reveal">
-        <p class="eyebrow">CAPITULA</p>
-        <h2 id="chapters-title">Титульники глав</h2>
-        <p>
-          Титульные изображения работают как архивные вклейки:
-        </p>
-      </div>
-
-      <div class="chapter-toolbar reveal" aria-label="Управление галереей">
-        <button class="filter-button is-active" type="button" data-filter="all">Все</button>
-        <button class="filter-button" type="button" data-filter="early">Prologus–V</button>
-        <button class="filter-button" type="button" data-filter="middle">VI–XI</button>
-        <button class="filter-button" type="button" data-filter="late">XII–Finis</button>
-      </div>
-
-      <div class="chapter-gallery" data-chapter-gallery aria-label="Галерея титульных изображений глав"></div>
-      <p class="gallery-note" data-empty-gallery hidden>Титульники глав не найдены в <code>assets/chapters/</code>.</p>
     </section>
 
     <section id="read" class="section section-pad" aria-labelledby="read-title">
       <div class="section-head reveal">
-        <p class="eyebrow">QUOMODO LEGERE</p>
-        <h2 id="read-title">Читать и хранить</h2>
-        <p>
-          У издания две устойчивые точки: отдельный репозиторий первой книги и общий репозиторий цикла.
-        </p>
+        <p class="eyebrow">Quomodo legere</p>
+        <h2 id="read-title">Как читать и распространять</h2>
+        <p>Лендинг ведёт к открытому репозиторию, папке первой книги и архиву DOCX-исходников. Его можно положить в корень отдельного репозитория или в папку `/docs`.</p>
       </div>
 
       <div class="read-grid">
-        <a class="read-card reveal" href="https://github.com/antonkurenkov/oblivio.duorum/tree/main/page/oblivio-duorum-markdown/oblivio_duorum_md" target="_blank" rel="noreferrer">
-          <span>01</span>
-          <h3>Markdown</h3>
-          <p>Оглавление, главы и изображения в формате, удобном для GitHub.</p>
-        </a>
-
-        <a class="read-card reveal" href="https://github.com/antonkurenkov/oblivio.duorum/tree/main/combined" target="_blank" rel="noreferrer">
-          <span>02</span>
-          <h3>Word-исходники</h3>
-          <p>DOCX-файлы книги: обложка и главы для дальнейшей сборки.</p>
-        </a>
-
         <a class="read-card reveal" href="https://github.com/antonkurenkov/openbook" target="_blank" rel="noreferrer">
+          <span>01</span>
+          <h3>Открыть цикл</h3>
+          <p>Перейти к репозиторию «Зелёная дверь» и списку книг.</p>
+        </a>
+        <a class="read-card reveal" href="https://github.com/antonkurenkov/openbook/tree/main/1" target="_blank" rel="noreferrer">
+          <span>02</span>
+          <h3>Открыть книгу I</h3>
+          <p>Перейти к странице Oblivio Duorum и материалам первого издания.</p>
+        </a>
+        <a class="read-card reveal" href="https://github.com/antonkurenkov/openbook/tree/main/1/combined" target="_blank" rel="noreferrer">
           <span>03</span>
-          <h3>Openbook</h3>
-          <p>Общий контейнер цикла «Зелёная дверь» и следующих книг.</p>
+          <h3>Открыть исходники</h3>
+          <p>Посмотреть главы в формате Word и общий архив исходных файлов.</p>
         </a>
       </div>
     </section>
 
+    <section id="visuals" class="section section-pad" aria-labelledby="visuals-title">
+      <div class="section-head reveal">
+        <p class="eyebrow">Imagines archivii</p>
+        <h2 id="visuals-title">Визуальный ряд</h2>
+        <p>Несколько изображений из репозитория: высокая вертикаль, архивная симметрия, технорелигиозная геометрия и следы документа, который не должен был сохраниться.</p>
+      </div>
+
+      <div class="gallery" aria-label="Галерея иллюстраций">
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/01.jpg" aria-label="Открыть иллюстрацию 1">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/01.jpg" alt="Архивный зал и одинокая фигура" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/05.jpg" aria-label="Открыть иллюстрацию 2">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/05.jpg" alt="Страж в техно-готическом коридоре" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/10.jpg" aria-label="Открыть иллюстрацию 3">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/10.jpg" alt="Схема двери и архивная геометрия" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/12.jpg" aria-label="Открыть иллюстрацию 4">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/12.jpg" alt="Тёмный артефакт в архивном зале" loading="lazy" />
+        </button>
+        <button class="gallery-item reveal" data-image="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/16.jpg" aria-label="Открыть иллюстрацию 5">
+          <img src="https://raw.githubusercontent.com/antonkurenkov/openbook/main/1/images/new/16.jpg" alt="Сервиторы над документами" loading="lazy" />
+        </button>
+      </div>
+    </section>
+
+    <section class="terminal-section section-pad reveal" aria-label="Архивная консоль">
+      <div class="terminal-card">
+        <div class="terminal-top"><span></span><span></span><span></span></div>
+        <pre aria-label="Текстовый фрагмент интерфейса"><code>ARCHIVARIUM://OBLIVIO_DUORUM
+status: text recovered
+access: partial
+warning: correlation between II and XI is prohibited
+instruction: noli eos separare</code></pre>
+      </div>
+    </section>
+
     <section class="final-cta section-pad reveal" aria-labelledby="final-title">
-      <p class="eyebrow">NOLI EOS SEPARARE</p>
+      <p class="eyebrow">Non separabis</p>
       <h2 id="final-title">Иногда книга действительно оказывается дверью.</h2>
-      <a class="button primary" href="https://github.com/antonkurenkov/oblivio.duorum" target="_blank" rel="noreferrer">Перейти к изданию</a>
+      <a class="button primary" href="https://github.com/antonkurenkov/openbook/tree/main/1/page/oblivio-duorum-markdown/oblivio_duorum_md" target="_blank" rel="noreferrer">Перейти к изданию</a>
     </section>
   </main>
 
@@ -510,14 +210,14 @@
     <p>© <span data-year></span> Oblivio Duorum · первое открытое издание</p>
     <div>
       <a href="https://github.com/antonkurenkov/openbook" target="_blank" rel="noreferrer">openbook</a>
-      <a href="https://github.com/antonkurenkov/oblivio.duorum" target="_blank" rel="noreferrer">oblivio.duorum</a>
+      <a href="https://github.com/antonkurenkov/openbook/blob/main/LICENSE.md" target="_blank" rel="noreferrer">license</a>
       <a href="#top">наверх</a>
     </div>
   </footer>
 
   <dialog class="image-dialog" data-dialog aria-label="Просмотр иллюстрации">
     <button class="dialog-close" data-dialog-close aria-label="Закрыть">×</button>
-    <img data-dialog-image alt="Увеличенная иллюстрация">
+    <img data-dialog-image src="" alt="Увеличенная иллюстрация" />
   </dialog>
 </body>
 </html>
